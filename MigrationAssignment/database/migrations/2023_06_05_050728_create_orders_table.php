@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id');
             // relation products table foreign key
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')
+                ->restrictOnDelete()
+                ->cascadeOnUpdate();;
             
             $table->integer('quantity');
             $table->timestamp('created_at')->useCurrent();
